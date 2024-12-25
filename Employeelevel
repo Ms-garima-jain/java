@@ -1,0 +1,51 @@
+import java.util.Scanner;
+class Employee
+{
+int employee_id;
+float Salary;
+Employee (int employee_id, float Salary)
+{
+	this.employee_id=employee_id;
+	this.Salary= Salary;
+} 	
+
+
+}
+
+class EmployeeLevel extends Employee
+{
+	
+	EmployeeLevel ( int employee_id, float Salary)
+	
+	{
+super ( employee_id, Salary);
+		System.out.print ( employee_id );
+		System.out.print ( Salary );
+
+		if (Salary> 100)
+		{
+			System.out.println (1);
+		}
+		else
+		{
+			System.out.println (2);
+		}
+	}
+}
+class Main 
+{
+	
+	public static void main ( String [] args )
+	{
+		
+		Scanner scn = new Scanner ( System.in );
+		System.out.println ( " Enter employee  id  and salary " );
+int employee_id = scn.nextInt();
+float Salary = scn.nextFloat();
+EmployeeLevel obj = new EmployeeLevel (employee_id, Salary);
+
+
+		
+		
+	}
+}
