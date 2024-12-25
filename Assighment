@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+class Person
+{
+	 private  String firstname;
+ private   String lastname;
+void setfirstname (String firstname)
+{
+	this.firstname= firstname;
+}
+void setlastname (String lastname)
+{
+	this.lastname= lastname;
+}
+String getfirstname()
+{
+	return firstname;
+}
+String getlastname()
+{
+	return lastname;
+}
+	
+	Person(String firstname, String lastname )
+	
+	{
+		this.firstname = firstname;
+		this.lastname= lastname;
+	}
+}
+class Employee extends Person
+{
+	int id;
+    String jobtitle;
+
+       void setId(int id )
+           {
+	       this.id= id;
+            }
+void setjobtitle (String jobtitle)
+{
+	this.jobtitle=jobtitle;
+}
+int getid()
+{
+	return id;
+}
+String getjobtitle()
+{
+	return jobtitle;
+
+	
+}
+ Employee ( String firstname, String lastname, int id , String jobtitle)
+ {super ( firstname, lastname);
+	 this.id = id;
+	 this.jobtitle = jobtitle;
+	 }
+}
+class  Main 
+{
+	
+	
+	public static void main ( String [] args )
+	{
+		
+		Scanner scn = new Scanner ( System.in );
+
+System.out.println( " Enter first  name " );
+ String firstname =scn.nextLine();
+System.out.println ( " Enter last name " );
+ String lastname  = scn.nextLine ();
+System.out.println ( " Enter the employee id  " );
+int  id = scn.nextInt();
+scn.nextLine();
+System.out.println ( " Enter the jobtitle  " );
+String jobtitle = scn.nextLine ();
+scn.nextLine();
+ Employee obj = new Employee (firstname, lastname, id, jobtitle);
+
+ obj.setfirstname(firstname);
+ obj.setlastname(lastname);
+ obj.setId(id);
+ obj.setjobtitle(jobtitle);
+ System.out.print (" Name "+obj.getfirstname());
+  System.out.print (obj.getlastname()+ " , ");
+   System.out.println (obj.getjobtitle());
+
+ System.out.println ( "Employee id " +obj.getid());
+
+ 
+
+
+
+
+
+
+	}
+}
