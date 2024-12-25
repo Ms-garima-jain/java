@@ -1,0 +1,83 @@
+import java.util.Scanner;
+class Transaction
+{
+int Transaction_id ;
+double amount;
+Transaction(int Transaction_id, double amount )
+{
+	this.Transaction_id = Transaction_id;
+	this.amount = amount;
+}
+
+
+}
+class PeerToPeerTransaction  extends Transaction
+{
+	
+	PeerToPeerTransaction ( int Transaction_id, double amount, String recipient)
+	{
+		super ( Transaction_id, amount);
+								System.out.println ("---------------------");
+
+		System.out.println ( " Peer To Peer Transaction" );
+		System.out.println("Transaction id :"+ Transaction_id );
+		System.out.println ( " amount " + amount );
+		System.out.println ( "recipient " + recipient);
+		System.out.println ();
+	}
+
+}
+class OnlinePurchase extends Transaction
+{
+	OnlinePurchase ( int Transaction_id, double amount, String Merchant)
+	{
+		super ( Transaction_id, amount);
+
+		System.out.println ( " Online purchase " );
+		System.out.println("Transaction id :"+ Transaction_id );
+		System.out.println ( " amount " + amount );
+		System.out.println ( "merchant " + Merchant );
+				System.out.println ();
+	}
+	
+}
+class BillPayment extends Transaction
+{
+	BillPayment( int Transaction_id, double amount, String BillType)
+	{
+		super ( Transaction_id, amount);
+		System.out.println ( " Bill payment transaction  " );
+		System.out.println("Transaction id :"+ Transaction_id );
+		System.out.println ( " amount " + amount );
+		System.out.println ( "billtype " + BillType);
+								System.out.println ("---------------------");
+
+	}
+}
+class Main
+{
+	
+	public static void main ( String [] args )
+	{
+		Scanner scn = new Scanner ( System.in );
+		System.out.println ( "enter transaction id " );
+		int Transaction_id = scn.nextInt();
+		System.out.println (" Enter the amount " );
+		double amount = scn.nextDouble ();
+		System.out.println ( " Enter the recipient " );
+		scn.nextLine();
+		String recipient = scn.nextLine ();
+				System.out.println ( " Enter the Merchant" );
+						String Merchant = scn .nextLine ();
+						System.out.println ( " Enter the Billtype" );
+						String BillType = scn .nextLine ();
+
+
+		PeerToPeerTransaction obj = new PeerToPeerTransaction ( Transaction_id, amount, recipient);
+		OnlinePurchase obj2 = new OnlinePurchase ( Transaction_id, amount, Merchant);
+				BillPayment obj3 = new BillPayment ( Transaction_id, amount, BillType);
+
+		
+		
+	}
+}
