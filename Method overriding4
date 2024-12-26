@@ -1,0 +1,41 @@
+class Vechile
+{
+  void  speed()
+{
+System.out.println ( " Speed varies for different vehicles.");
+} 
+
+}
+
+class Car extends Vechile
+{
+void  speed()
+{
+System.out.println ( "The car speed is 120 km/h.");
+} 
+
+}
+
+class Bike  extends Vechile
+{
+void  speed()
+{
+System.out.println (  "The bike speed is 80 km/h.");
+} 
+
+}
+
+
+class Main 
+
+{
+public static void main ( String [] args )
+{
+Vechile obj ;
+obj= new Car ();
+obj.speed();
+obj= new Bike();
+obj.speed();
+}
+
+}
