@@ -1,0 +1,57 @@
+class  Shape 
+{
+ void calculateArea() 
+{
+System.out.println ( "Area calculation not defined for Shape.");
+
+}
+
+}
+class Circle extends Shape
+{
+ void calculateArea() 
+{
+double radius =5.5;
+double areacircle =3.14*radius*radius;
+System.out.println ( " area of circle " + areacircle );
+
+}
+
+}
+
+class Rectangle extends Circle
+{
+
+ void calculateArea() 
+{
+double length =2.5;
+double width =5.0;
+double arearectangle =length*width;
+System.out.println ( " area of rectangle " + arearectangle );
+
+}
+}
+class Main
+
+{
+	
+	
+	public static void main ( String [] args )
+	{
+	/*Shape  obj ;
+obj	= new  Circle();
+	obj.calculateArea();
+	  obj = new  Reactangle();
+	obj.calculateArea();*/
+	Shape a [] = new Shape[2];
+	a[0] = new Circle();
+	a[1] = new Rectangle ();
+for ( Shape x :a )
+{
+	x.calculateArea();
+	
+}	
+	
+		
+	}
+}
