@@ -1,0 +1,54 @@
+class Bank
+{
+ int  getInterestRate()
+{
+return 0;
+} 
+
+}
+
+class Sbi extends Bank
+{
+int  getInterestRate()
+{
+return 5;
+} 
+
+}
+
+class Icici  extends Bank
+{
+int  getInterestRate()
+{
+return 6;
+} 
+
+}
+
+class Axis extends Bank
+{
+int  getInterestRate()
+{
+return 7;
+} 
+
+}
+class Main 
+
+{
+public static void main ( String [] args )
+{
+Bank obj ;
+obj= new Sbi();
+System.out.println (" rate of interest Sbi"+obj.getInterestRate());
+
+obj= new  Icici();
+System.out.println (" rate of interest icici "+obj.getInterestRate());
+
+obj= new  Axis();
+System.out.println (" rate of interest  axis"+obj.getInterestRate());
+
+
+}
+
+}
