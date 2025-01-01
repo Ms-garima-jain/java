@@ -1,0 +1,67 @@
+abstract  class Payment
+{
+
+double amount;
+String transcationid;
+ Payment ( double amount, String transcationid)
+ {
+ this.amount = amount;
+ this.transcationid = transcationid;
+ }
+ abstract void  processpayment();
+ void displayDetails()
+ {
+ System .out.println ( " transaction id " + transcationid + " amount " + amount );
+ }
+
+}
+
+ class Creditcard extends Payment
+{
+String cardnumber;
+Creditcard (double amount,String transcationid , String cardnumber)
+{	super ( amount , transcationid );
+
+	this.cardnumber = cardnumber;
+}
+void processpayment()
+{
+System.out.println ("processing credit card payment" + "   " + "cardnumber" + " " + cardnumber+ " for amount " + amount ); 
+
+}
+
+}
+
+ class Paypal extends Payment
+{
+String paypalid;
+Paypal ( double amount,String transcationid , String paypalid)
+{
+	super ( amount, transcationid );
+	this.paypalid = paypalid;
+}
+void processpayment()
+{
+System.out.println ("processing paypal payment for " + paypalid+ " for amount " + amount ); 
+
+}
+
+}
+
+class Main
+{
+public static void main ( String [] args )
+{
+Creditcard obj = new Creditcard (5000, " tran55555", "Cardd1222");
+obj.processpayment();
+obj.displayDetails ();
+
+Paypal obj2 = new Paypal (5000, " transc6666", "paypal7777");
+obj2.processpayment();
+obj2.displayDetails ();
+
+
+
+}
+
+}
