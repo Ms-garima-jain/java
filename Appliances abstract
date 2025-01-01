@@ -1,0 +1,63 @@
+abstract class Appliance
+{
+String brand ;
+boolean isOn;
+Appliance ( String brand, boolean isOn )
+{
+this.brand = brand;
+this.isOn = isOn;
+
+}
+abstract void operate();
+ void turnOn()
+ {
+  isOn = true;
+  System.out.println ( " the " + brand+ " is now on" );
+ }
+  void turnOff()
+ {  
+  isOn = false;
+  System.out.println ( " the "+brand+" is now off " );
+ }
+}
+ class Washingmachine extends Appliance
+{
+ Washingmachine ( String brand , boolean isOn)
+ {
+	 super ( brand, isOn );
+	 
+ }
+ void operate ()
+{
+System.out.println ( " the washing machine is washing clothes " );
+}
+}
+ class  Refigrator extends  Appliance
+ {
+	 Refigrator ( String brand, boolean isOn )
+	 {
+		  super ( brand, isOn );
+	 }
+  void operate ()
+{
+System.out.println ( " the refigrator is cooling items " );
+}
+ }
+  class Main 
+  {
+  
+  public static void main ( String [] args )
+  {
+
+  Washingmachine obj = new Washingmachine ("washingmachine " , false);    
+obj.turnOn();
+      obj.operate();
+	  obj.turnOff();
+
+  Refigrator obj1 = new Refigrator ("Refrigrator " , false);
+  obj1.turnOn ();
+  obj1.operate();
+  obj1.turnOff();
+  }
+  
+  }
