@@ -1,0 +1,84 @@
+ abstract class LibraryItem 
+ 
+ {
+ String title;
+String author;
+LibraryItem ( String title, String author )
+{
+this.title = title;
+this.author = author;
+}
+abstract void checkout();
+abstract void returnItem();
+ void displayInfo()
+ {
+ System.out.println ( " title " + title + "author " + author );
+ } 
+ }
+ class Book extends LibraryItem
+  {
+	  
+	  int pages;
+	  Book ( String title, String author , int pages)
+	  {
+		  
+		  super ( title, author );
+		  this.pages = pages;
+	  }
+	    void checkout() 
+		{
+			
+			System.out.println ("Checking out book: "+title);
+		}
+	void 	returnItem() 
+	{
+		
+					System.out.println ("Returning book"+title);
+					System.out.println ( "pages : " + pages);
+
+	}
+	  
+  }
+  
+ class  Dvd extends LibraryItem
+  {
+	  
+	  int duration;
+	  Dvd ( String title, String author , int duration)
+	  {
+		  
+		  super ( title, author );
+		  this.duration = duration;
+		 
+	  }
+	    void checkout() 
+		{
+			
+			System.out.println ("Checking out dvd: "+title);
+		}
+	void 	returnItem() 
+	{
+		
+					System.out.println ("Returning dvd"+title);
+					System.out.println("duration" + duration );
+
+	}
+	  
+  }
+  class Main
+  {
+	  
+	  
+	  public static void main ( String [] args )
+	  {
+		  
+		  Book obj = new Book ("english " , " capt bj " ,200);
+		  obj.checkout();
+		  obj.returnItem();
+		  obj.displayInfo ();
+		   Dvd obj1 = new Dvd ("katappa " , " movie " ,2);
+		  obj1.checkout();
+		  obj1.returnItem();
+		  obj1.displayInfo ();
+	  }
+  }
