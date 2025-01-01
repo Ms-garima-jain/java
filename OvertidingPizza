@@ -1,0 +1,67 @@
+import java.util.Scanner;
+class Pizza
+{
+double price ;
+double toppingcost;
+int nooftopping;
+Pizza( double price, double toppingcost ,int nooftopping)
+{
+this.price = price;
+this.toppingcost = toppingcost;
+this.nooftopping= nooftopping;
+}
+double calculateprice ()
+{
+double calc = price+(toppingcost*nooftopping);
+return calc;
+
+}
+
+
+}
+class Discount extends Pizza
+{
+	Discount ( double price , double toppingcost, int nooftopping )
+	{
+		super ( price,toppingcost,  nooftopping);
+
+	}
+double calculateprice ()
+{double calc = price+(toppingcost*nooftopping);
+
+	if  (nooftopping > 3){
+	double discounted_price = 0.9*calc;
+	return discounted_price;
+
+	}
+	else
+	{
+		return calc;
+	}
+
+
+}
+
+}
+class Main
+{
+public static void main ( String [] args )
+{
+Scanner scn = new Scanner ( System.in );
+System.out.println (" Enter the base price " );
+double base_price = scn.nextDouble ();
+System.out.println ( " Enter to cost of toppings " );
+double cost_toppings = scn.nextDouble ();
+
+System.out.println ( " Enter the  number of toppings " );
+int nooftopping = scn.nextInt ();
+Pizza obj = new Pizza ( base_price, cost_toppings, nooftopping );
+Discount obj1 = new Discount (base_price, cost_toppings, nooftopping);
+double print =obj.calculateprice();
+double printt = obj1.calculateprice ();
+System.out.printf (" Price without discount: %.2f%n ", print );
+System.out.printf (" Price with discount: %.2f%n",printt );
+
+}
+
+}
