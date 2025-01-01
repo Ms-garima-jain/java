@@ -1,0 +1,63 @@
+import java.util.Scanner;
+class Regularcustomer
+{
+double  amountspent;
+double calculate;
+
+  double claculatepoints ( double amountspent)
+{
+this.amountspent = amountspent;
+ this.calculate = amountspent/10;
+return this.calculate;
+}
+
+
+}
+class Premiumcustomer
+{
+double amountspent;
+double calculate;
+
+
+   double claculatepoints ( double amountspent)
+{
+this.amountspent = amountspent;
+this.calculate = 2*(amountspent/10);
+return this.calculate;
+
+}
+
+
+}
+class Main
+{
+public static void main ( String [] args )
+{
+Scanner scn = new Scanner ( System.in );
+System.out.println ( "Enter the amount " );
+double amount= scn.nextDouble ();
+ scn.nextLine ();
+System.out.println ( " enter premium customer status " );
+
+ String status = scn.nextLine ();
+
+ 
+if (status.equals("yes") )
+{
+	Premiumcustomer obj = new Premiumcustomer ();
+	double print =obj.claculatepoints( amount);
+	System.out.println ( print );
+}
+else
+{
+	Regularcustomer obj = new Regularcustomer ();
+	double printt = obj.claculatepoints (amount);
+	System.out.println ( printt );
+}
+
+
+
+
+}
+
+}
