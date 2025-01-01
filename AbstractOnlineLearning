@@ -1,0 +1,65 @@
+abstract class Course 
+{
+String coursename;
+ int duration;
+  Course ( String coursename , int duration )
+  {
+  this.coursename = coursename;
+  this. duration = duration;
+  
+  }
+  abstract void showContent();
+  void displayDetails()
+  {
+  System.out.println ( " coursename " + coursename + "duration " + duration );
+  }
+
+
+
+}
+ class ProgrammingCourse extends Course
+ {
+ String language;
+ ProgrammingCourse ( String coursename, int duration , String language )
+ {
+	 super ( coursename, duration);
+ this.language = language;
+ }
+  void showContent()
+  {
+  System.out.println ("This course covers programming in"+ language );
+  }
+ 
+ }
+ class DesignCourse extends Course
+ {
+	 
+ String tool;
+ DesignCourse ( String coursename, int duration , String tool )
+ {
+	 	 super ( coursename, duration);
+
+ this.tool = tool;
+ }
+  
+   void showContent()
+  {
+  System.out.println ("This course focuses on design using "+ tool );
+  }
+  
+ 
+ }
+  class Main
+  {
+  public static void  main ( String [] args )
+  {
+  ProgrammingCourse obj = new ProgrammingCourse ("Dsa " , 6, "java");
+  obj.showContent ();
+  obj.displayDetails();
+  DesignCourse obj2 = new DesignCourse ("c++" , 7, "ide");
+  obj2.showContent();
+  obj2.displayDetails();
+  
+  }
+  
+  }
