@@ -1,0 +1,61 @@
+interface LibraryOperations
+{
+
+void issueBook() ;
+void returnBook();
+}
+ class Student implements LibraryOperations
+ {
+ public void  issueBook ()
+ {
+	 System.out.println ( " issue book " );
+ System.out.println ( "  book name :  Rd Sharma ");
+ System .out.println ( "Date : 5-01-2005");
+ System.out.println ( " Status : Student " );
+ System.out.println ( " Student name :  garima jain" );
+ }
+ public void returnBook ()
+ {
+	 	 System.out.println ( " Return book " );
+
+ System.out.println ( " Return book by garima jain  Date : 02-01-2025");
+ }
+ 
+ 
+ }
+ 
+ class Teacher implements LibraryOperations
+ {
+ public void  issueBook ()
+ {
+	  System.out.println ( " =====================================" );
+	 System.out.println ( " issue book " );
+
+ System.out.println ( "  book name :  Blackbook ");
+ System .out.println ( "Date : 15-01-2005");
+ System.out.println ( " Status : Teacher " );
+ System.out.println ( " Teacher name :  Ajay sir " );
+ }
+ public void returnBook ()
+ {
+	 	 	 System.out.println ( " Return book " );
+
+ System.out.println ( " Return book by Ajay sir  Date : 20-01-2025");
+ }
+ 
+ 
+ }
+ class Main
+ {
+ 
+ public static void main ( String [] args )
+ {
+ LibraryOperations obj = new Student ();
+ obj.issueBook();
+ obj.returnBook();
+ LibraryOperations obj2 = new Teacher ();
+ obj2.issueBook();
+ obj2.returnBook ();
+ 
+ }
+ }
