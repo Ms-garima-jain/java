@@ -1,0 +1,44 @@
+interface Shape 
+
+{
+double calculateArea();
+
+}
+ class Circle implements Shape
+ {
+ public double calculateArea ( )
+ {
+double radius=51.26;
+ double Circle = 3.14*radius*radius;
+ return Circle;
+ 
+ }
+ }
+ 
+  class Rectangle implements Shape
+  {
+  
+  public double calculateArea (   )
+  
+  {
+	  double length=9.58;
+	  double width=54.25;
+  double Rectangle = length*width;
+  return Rectangle;
+  }
+  
+  }
+  class Main 
+  {
+  public static void main ( String [] args )
+  {
+  Shape obj = new Circle ();
+  System.out.println ("area of circle "+  obj.calculateArea ());
+  Shape obj2 = new  Rectangle ();
+  System.out.println ("area of rectangle "+obj2.calculateArea());
+  
+  
+  
+  }
+  
+  }
