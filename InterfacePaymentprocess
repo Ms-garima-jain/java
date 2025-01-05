@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+interface PaymentGateway
+{
+double processPayment(double amount);
+
+
+}
+ class CreditCardPayment implements  PaymentGateway
+ {
+ 
+public  double processPayment( double amount )
+ {
+ 
+ System.out.println ( "processingipi payment amount " + amount );
+ return amount;
+ }
+ }
+ class UPIPayment implements PaymentGateway
+ {
+ public  double processPayment( double amount )
+ {
+  System.out.println ( "processingipi payment amount " + amount );
+
+ return amount;
+ }
+ 
+ }
+ class Driver
+ {
+ public static void main ( String [] args )
+ {
+ Scanner scn = new Scanner ( System.in );
+ System.out.println ( " enter amount " );
+ double amount = scn.nextDouble ();
+ 
+ PaymentGateway obj = new CreditCardPayment ();
+ obj.processPayment (amount);
+  PaymentGateway obj2= new UPIPayment( );
+ obj2.processPayment(amount);
+ 
+ }
+ 
+ }
