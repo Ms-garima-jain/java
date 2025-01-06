@@ -1,0 +1,44 @@
+interface Calculator 
+{
+	
+int Add (int x , int y);
+int mul (int x , int y);
+int sub (int x , int y);
+int div (int x , int y);
+}
+class Calculation implements Calculator
+{
+	
+	public int Add ( int x , int y)
+	{
+		
+		return x +y;
+	}
+	public int mul ( int x , int y )
+	{
+		return x *y;
+	}
+	public int sub ( int x, int y )
+	{
+		return x-y ;
+	}
+	public int div (int x , int y )
+	{
+		return x /y;
+	}
+}
+ class Demo
+ {
+	 
+	 public static void main (String [] args )
+	 {
+		 Calculator obj = new Calculation ();
+		 System.out.println ( obj.Add(10, 10));
+		 		 System.out.println ( obj.sub(10, 10));
+				 		 System.out.println ( obj.mul(10, 10));
+						 		 System.out.println ( obj.div(10, 10));
+
+
+
+	 }
+ }
