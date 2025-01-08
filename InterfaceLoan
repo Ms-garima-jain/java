@@ -1,0 +1,82 @@
+import java.util.Scanner;
+interface principal
+{
+
+double principal ();
+
+}
+interface interesrate
+{
+double interesrate( );
+
+}
+class Loan implements principal , interesrate
+{
+Scanner scn = new Scanner ( System.in);
+ public double principal ()
+{
+
+System.out.println ( " Enter principal " );
+  double principal = scn.nextDouble ();
+return principal;
+}
+ public double interesrate (  )
+{
+System.out.println ( " Enter interesrate  " );
+ double interesrate = scn.nextDouble ();
+return interesrate;
+}
+ public int year ( )
+ {
+	 
+	 System.out.println ( " Enter year " );
+	 int year = scn.nextInt ();
+	 return year;
+ }
+ public double calculate (double principal , double interesrate , int  year)
+ {
+	 double Totalinterest=0;
+	 System.out.println (principal );
+	 System.out.println (interesrate);System.out.println (year );
+	 
+	  if ((principal  <= 0&&principal >1000000) ||( interesrate <0)|| (year >0 &&(year > 25))
+	  )
+		 	{
+		
+		System.out.println ( " invalid input values " );
+	}
+	else
+	{
+		
+		 Totalinterest= principal*interesrate*year;
+		System.out.println ( " Total interest paid " + Totalinterest );
+	//	Totalinterest1 =Totalinterest;
+	}
+	return Totalinterest;	 
+ }
+	 
+
+ }
+ class Main 
+ {
+	 public static void main ( String [] args )
+	 {
+		 
+		 Loan obj = new Loan ();
+		 double principal = obj.principal ();
+		 System.out.println (principal);
+	
+		 double interesrate = obj.interesrate ();
+		 	 System.out.println (interesrate);
+		 int year = obj.year ();
+		 System.out.println (year );
+		 obj.calculate (principal, interesrate, year);
+		// System.out.println ( "Final calculated interest: " + Totalinterest1);
+	
+	/*System.out.println (obj.principal ());
+	double principal1  = obj.principal ();*/
+	
+	
+		 
+	 }
+ }
