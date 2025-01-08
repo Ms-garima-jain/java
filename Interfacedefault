@@ -1,0 +1,28 @@
+ interface Shape 
+{
+default void draw()
+{
+
+System.out.println ( " Drwaing a generic shape " );
+}
+
+}
+ class Circle implements Shape
+ {
+ public  void draw ()
+ {
+ System.out.println(" Drawing a circle " );
+ }
+ 
+ }
+  class Main
+ {
+ public static void main( String [] args )
+ {
+ 
+ Shape obj = new Circle();
+ obj.draw ();
+ }
+ 
+ 
+ }
