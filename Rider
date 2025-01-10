@@ -1,0 +1,69 @@
+interface Ride 
+{
+double calculateFare (double distance );
+
+
+}
+class BikeRide  implements Ride
+{
+public double calculateFare (double distance )
+{
+int km = 10;
+ double calculate = distance*km;
+ return calculate;
+}
+
+}
+class CarRide  implements Ride
+{
+public double calculateFare (double distance )
+{
+ int km = 20;
+ double calculate = distance*km;
+ return calculate;
+}
+
+}
+class ShareRide  implements Ride
+{
+public double calculateFare (double distance )
+{
+ int km = 30;
+ double  calculate = distance*km;
+ return calculate;
+}
+
+}import java.util.Scanner;
+class Hello 
+{
+
+public static void main ( String [] args )
+{
+Scanner scn = new Scanner ( System.in );
+ System.out.println ( " Enter RideType " );
+ String in = scn.nextLine();
+ 
+ System.out.println ( " Enter distance " );
+ 
+ Double dd = scn.nextDouble ();
+ if ( in =="Bikeride" )
+ {
+ BikeRide obj = new BikeRide ();
+ System.out.println (" distance of bikeride "+obj.calculateFare(dd));
+ 
+ }
+ else if (in == "carride")
+ {
+ CarRide obj = new CarRide ();
+ System.out.println ("distance of carride "+obj.calculateFare(dd));
+ }
+ else
+ {
+ ShareRide obj = new ShareRide ();
+System.out.println("distance  of Shareride"+ obj.calculateFare (dd ));
+ 
+ }
+
+
+}
+}
