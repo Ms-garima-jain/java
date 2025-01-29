@@ -1,0 +1,20 @@
+import java.util.*;
+import java .io .*;
+class Demo
+{
+public static void main ( String [] args )
+{
+System.out.println ( " main start " );
+try{
+PrintWriter pw = new PrintWriter ( "www.txt");
+pw.write ( " rashmika " );
+}
+catch (FileNotFoundException obj )
+{
+	System.out.println ( " file not exist " );
+}
+System.out.println ( " done " );
+
+}
+
+}
