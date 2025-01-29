@@ -1,0 +1,21 @@
+class Demo
+{
+public static void main ( String [] args )
+{
+System.out.println ( " main start " );
+try
+{
+String str = null ;
+int x = str.length ();
+System.out.println ( x );
+
+}
+catch (NullPointerException obj )
+{
+System.out.println ( " String cannot be null " );
+}
+
+
+}
+
+}
