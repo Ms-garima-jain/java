@@ -1,0 +1,33 @@
+class Demo2
+{
+public static void main ( String [] args )
+{
+System.out.println ( " main start " );
+try{
+String x = args [0] ;
+System.out.println ( " first " );
+String y = args [1] ;
+System.out.println ( " second " );
+int a = Integer.parseInt (x);
+System.out.println ( " third " );
+int b = Integer.parseInt (y );
+ System.out.println ( " fourt " );
+ 
+ int c =a/b ;
+ System.out.println ( " done " );
+
+}
+catch ( ArithmeticException obj )
+{
+System.out.println ( " Please do not provide zero " );
+
+}
+catch ( NumberFormatException obj1)
+{
+System.out.println ( " Please enter integer value " );
+
+}
+}
+
+
+}
