@@ -1,0 +1,34 @@
+class Person
+{
+int id ;
+String name ;
+Person ( int id , String name )
+{
+this.id = id ;
+this.name = name ;
+
+
+}
+ Person ()
+ {
+ 
+ }
+public String toString ()
+{
+	return id + " : "+ name ; 
+}
+}
+ class Student extends Person
+ {
+ 
+ }
+ 
+  class Demo90
+  {
+  public static void main ( String [] args )
+  {
+  Student obj = new Student (1 , " hello ");
+  System.out.println ( obj );
+  }
+  
+  }
