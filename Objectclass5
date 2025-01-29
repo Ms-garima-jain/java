@@ -1,0 +1,33 @@
+class Person
+{
+private int id ;
+private String name ;
+Person ( int id , String name )
+{
+this.id = id ;
+this.name = name;
+}
+Person ()
+{
+}
+public boolean equals (Person p )
+{
+	return this.id== p.id  && this.name.equals(p.name);
+	
+}
+}
+class Demo90
+{
+public static void main ( String args [] )
+{
+Person p1 = new Person (101," garima " );
+Person p2 = new Person ( 102 , " jiya jain " );
+int i =10;
+int j =20;
+System.out.println (i==j);
+System.out.println ( p1==p2);
+System.out.println ( p1.equals(p2));
+System.out.println ( p1.hashCode());
+System.out.println ( p2.hashCode ());
+}
+}
