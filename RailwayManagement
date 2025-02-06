@@ -1,0 +1,83 @@
+import java .util.LinkedList;
+import java.util.	Scanner;
+class Passenger
+{
+	
+	int ticketNumber;
+    String name;
+    String source;
+    String destination;
+    int seatNumber;
+	
+    Passenger(int ticketNumber, String name, String source, String destination, int seatNumber) {
+        this.ticketNumber = ticketNumber;
+        this.name = name;
+        this.source = source;
+        this.destination = destination;
+        this.seatNumber = seatNumber;
+    }
+	
+	  public String toString() {
+        return "Ticket No: " + ticketNumber + " | Name: " + name + " | From: " + source + " | To: " + destination + " | Seat: " + seatNumber;
+    }
+}
+class Main
+{
+	public static void main ( String [] args )
+	{
+		Scanner scn = new Scanner ( System.in );
+		LinkedList<Passenger>l = new LinkedList<>();
+		int ticketnumber=0;
+		for ( int i =0; i<2; i++)
+		{
+			
+			System.out.println("Enter the ticket number: ");
+             ticketnumber = scn.nextInt();
+			System.out.println("Enter the Name: ");
+            String Name = scn.nextLine();
+			scn.nextLine();
+			System.out.println("Enter the source: ");
+            String source = scn.nextLine();
+			scn.nextLine();
+			System.out.println("Enter the destination: ");
+            String destination = scn.nextLine();
+			scn.nextLine();
+						System.out.println("Enter the seatNumber ");
+
+			int seatNumber = scn.nextInt();
+            scn.nextLine(); 
+			  l.add(new Passenger(ticketnumber, Name, source, destination, seatNumber));
+		}
+		 System.out.println("\nPassenger List:");
+        for (Passenger p : l) {
+            System.out.println(p);
+        }
+		System.out.println ( " addnew reservation at the end of the list " );
+		 l.addLast(new Passenger(40, "golden", "s1","kumb", 45));
+        l.addLast(new Passenger(50, "piyush", "s2","kumbh2", 55));
+		for (Passenger p : l) {
+            System.out.println(p);
+        }
+		
+		System.out.println ( " cancel a request by ticketnumber " );
+		System.out.println ( " Enter cancel ticket number " );
+		int cancelticket = scn.nextInt ();
+		for (int i =0; i<l.size () ; i++ )
+		{
+			
+			if ( l.get(i).ticketNumber==cancelticket)
+			{
+				l.remove(i);
+				        System.out.println("Ticket No: " + cancelticket + " has been canceled.");
+break;
+			}
+		}
+		
+		System.out.println ( " All reserverd seats are " );
+		for ( Passenger i :l)
+		{
+			System.out.println (i);
+		}
+	}
+	
+}
