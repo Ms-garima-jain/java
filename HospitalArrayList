@@ -1,0 +1,121 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Hospital {
+    int id;
+    String name;
+    String disease;
+    int age;
+
+    Hospital(int id, String name, String disease, int age) {
+        this.id = id;
+        this.name = name;
+        this.disease = disease;
+        this.age = age;
+    }
+
+    public String toString() {
+        return "id: " + id + " | name: " + name + " | disease: " + disease + " | age: " + age;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        ArrayList<Hospital> l = new ArrayList<>();
+        Scanner scn = new Scanner(System.in);
+
+        // Input patient details
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Enter patient id:");
+            int id = scn.nextInt();
+            scn.nextLine(); // Consume newline
+
+            System.out.println("Enter patient name:");
+            String name = scn.nextLine().trim();
+
+            System.out.println("Enter disease name:");
+            String disease = scn.nextLine().trim();
+
+            System.out.println("Enter age:");
+            int age = scn.nextInt();
+            scn.nextLine(); // Consume newline
+
+            l.add(new Hospital(id, name, disease, age));
+        }
+
+        // Display patients
+        System.out.println("====================================");
+        System.out.println("Patients List:");
+        for (Hospital patient : l) {
+            System.out.println(patient);
+        }
+
+        // Adding new patients
+        l.add(new Hospital(4, "golden", "fever", 45));
+        l.add(new Hospital(5, "piyush", "fevedr", 5));
+
+        System.out.println("====================================");
+        System.out.println("After adding new patients:");
+        for (Hospital patient : l) {
+            System.out.println(patient);
+        }
+
+        // Search disease by name
+        System.out.println("====================================");
+        System.out.println("Enter disease to search:");
+        String diseasename = scn.nextLine().trim();
+
+        boolean found = false;
+        for (Hospital patient : l) {
+            if (patient.disease.trim().equalsIgnoreCase(diseasename)) {
+                System.out.println("Patient found: " + patient);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No patient found with disease: " + diseasename);
+        }
+		
+  System.out.println ( " Youngest  patient" );
+  Hospital smallest = l.get (0);
+  for ( Hospital  patient : l )
+  {
+	   if(patient.age <smallest.age )
+	   {
+		   smallest= patient;
+	   }		   
+	  
+  }
+  System.out.println("Patient with the youngest age: " + smallest);
+  System.out.println ("Enter the id of the patient to be discharged " );
+  int discharge = scn.nextInt ();
+boolean removed = false  ;
+for ( int i = 0 ; i<l.size(); i++)
+{
+	
+	if ( l.get(i).id ==discharge)
+	{
+		l.remove(i);
+		removed = true;
+		break ;
+	}
+}
+
+if (removed )
+{
+	System.out.println( " Patient with id " + discharge+ " has  been discharged " );
+}
+else
+{
+	    System.out.println("No patient found with ID " + discharge);
+
+}
+System.out.println("After removal Updated Patient List:");
+for (Hospital patient : l) {
+    System.out.println(patient);
+}
+      
+        
+    }
+}
