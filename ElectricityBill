@@ -1,0 +1,202 @@
+import java.util.Scanner;
+
+class ElectricityBill {
+    Scanner scn = new Scanner(System.in);
+
+    // Variables
+    long finalConsumption;
+    double charge;
+    double fixedCharge;
+    double totalCharge; // Changed from long to double
+    long subsidy;
+    double rebate;
+    double sanctionedLoad = 0; // Default value to prevent uninitialized errors
+    long currentReading;
+    long previousReading;
+
+    // User details
+    String name, address, mobileNumber, connectionType, division, email;
+
+    // Constructor
+    ElectricityBill(String name, String address, String mobileNumber, String connectionType, String division, String email) {
+        this.name = name;
+        this.address = address;
+        this.mobileNumber = mobileNumber;
+        this.connectionType = connectionType;
+        this.division = division;
+        this.email = email;
+
+        // Get user input based on connection type
+        if (connectionType.equalsIgnoreCase("Domestic")) {
+            System.out.print("Enter Current Reading: ");
+            currentReading = scn.nextLong();
+            System.out.print("Enter Previous Reading: ");
+            previousReading = scn.nextLong();
+
+            // Calculate final consumption
+            finalConsumption = currentReading - previousReading;
+
+            charge = calculateDomesticCharges(finalConsumption);
+            fixedCharge = calculateDomesticFixedCharge(finalConsumption);
+            subsidy = calculateSubsidy(finalConsumption);
+            totalCharge = charge + fixedCharge - subsidy; // Now using double
+
+        } else if (connectionType.equalsIgnoreCase("Commercial")) {
+            System.out.print("Enter sanctioned load (in kW): ");
+            sanctionedLoad = scn.nextDouble();
+            scn.nextLine(); // Consume newline left by nextDouble()
+
+            System.out.print("Enter Current Reading: ");
+            currentReading = scn.nextLong();
+            System.out.print("Enter Previous Reading: ");
+            previousReading = scn.nextLong();
+
+            // Calculate final consumption
+            finalConsumption = currentReading - previousReading;
+
+            charge = calculateCommercialCharges(finalConsumption);
+            fixedCharge = calculateCommercialFixedCharge(sanctionedLoad);
+            rebate = calculateRebate(finalConsumption);
+            totalCharge = charge + fixedCharge - rebate; // Now using double
+
+        } else {
+            System.out.println("Invalid connection type. Please enter 'Domestic' or 'Commercial'.");
+            return;
+        }
+
+        // Print the formatted bill
+        printBill();
+    }
+
+    // Domestic Energy Charge Calculation
+    private double calculateDomesticCharges(long finalConsumption) {
+        double totalCharge = 0;
+
+        if (finalConsumption > 150) {
+            totalCharge += (finalConsumption - 150) * 7.50;
+            finalConsumption = 150;
+        }
+        if (finalConsumption > 100) {
+            totalCharge += (finalConsumption - 100) * 6.50;
+            finalConsumption = 100;
+        }
+        if (finalConsumption > 50) {
+            totalCharge += (finalConsumption - 50) * 4.50;
+            finalConsumption = 50;
+        }
+        if (finalConsumption > 0) {
+            totalCharge += finalConsumption * 3.00;
+        }
+        return totalCharge;
+    }
+
+    // Domestic Fixed Charge Calculation
+    private double calculateDomesticFixedCharge(long finalConsumption) {
+        if (finalConsumption <= 50) {
+            return 71;
+        } else if (finalConsumption <= 150) {
+            return 124;
+        } else {
+            double fixedChargePer0_1kW = 27;
+            double connectedLoadIn0_1kW = 2 * 6;
+            return connectedLoadIn0_1kW * fixedChargePer0_1kW;
+        }
+    }
+
+    // Subsidy Calculation (for Domestic consumers)
+    private long calculateSubsidy(long finalConsumption) {
+        return finalConsumption <= 150 ? 100 : 0;
+    }
+
+    // Commercial Energy Charge Calculation
+    private double calculateCommercialCharges(long finalConsumption) {
+        double totalCharge = 0;
+
+        if (finalConsumption > 2000) {
+            totalCharge += (finalConsumption - 2000) * 7.50;
+            finalConsumption = 2000;
+        }
+        if (finalConsumption > 1000) {
+            totalCharge += (finalConsumption - 1000) * 7.00;
+            finalConsumption = 1000;
+        }
+        if (finalConsumption > 500) {
+            totalCharge += (finalConsumption - 500) * 6.50;
+            finalConsumption = 500;
+        }
+        if (finalConsumption > 0) {
+            totalCharge += finalConsumption * 6.00;
+        }
+        return totalCharge;
+    }
+
+    // Commercial Fixed Charge Calculation
+    private double calculateCommercialFixedCharge(double sanctionedLoad) {
+        return sanctionedLoad * 90; // ₹90 per kW
+    }
+
+    // Rebate Calculation (for Commercial consumers)
+    private double calculateRebate(long finalConsumption) {
+        System.out.print("Is power factor above 0.85? (yes/no): ");
+        String powerFactorStatus = scn.next();
+        return powerFactorStatus.equalsIgnoreCase("yes") ? finalConsumption * 1.00 : 0;
+    }
+
+    // Print Bill
+    void printBill() {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("        Madhya Pradesh Electricity Bill");
+        System.out.println("--------------------------------------------------");
+        System.out.printf("Name:                 %s\n", name);
+        System.out.printf("Address:              %s\n", address);
+        System.out.printf("Mobile Number:        %s\n", mobileNumber);
+        System.out.printf("Connection Type:      %s\n", connectionType);
+        System.out.printf("Division:             %s\n", division);
+        System.out.printf("Email ID:             %s\n", email);
+        System.out.println("--------------------------------------------------");
+        System.out.printf("Previous Reading:      %d units\n", previousReading);
+        System.out.printf("Current Reading:       %d units\n", currentReading);
+        System.out.printf("Final Consumption:     %d units\n", finalConsumption);
+        if (connectionType.equalsIgnoreCase("Commercial")) {
+            System.out.printf("Sanctioned Load:       %.2f kW\n", sanctionedLoad);
+        }
+        System.out.printf("Energy Charges:        %.2f\n", charge);
+        System.out.printf("Fixed Charges:         %.2f\n", fixedCharge);
+
+        if (connectionType.equalsIgnoreCase("Commercial")) {
+            System.out.printf("Rebate Applied:       %.2f\n", rebate);
+        } else {
+            System.out.printf("Subsidy Applied:      %d\n", subsidy);
+        }
+
+        System.out.printf("Total Payable Amount: %.2f\n", totalCharge);
+        System.out.println("--------------------------------------------------");
+        System.out.println("Pay Before Due Date to Avoid Late Fees.");
+        System.out.println("--------------------------------------------------\n");
+    }
+}  // **CLOSED ElectricityBill CLASS HERE**
+
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("--*---*- Smart Bill Calculator | Instantly Compute Your Electricity Costs with Ease! -*-----*");
+
+        // Collect user details
+        System.out.print("Enter Your Name: ");
+        String name = scn.nextLine();
+        System.out.print("Enter Your Address: ");
+        String address = scn.nextLine();
+        System.out.print("Enter Your Mobile Number: ");
+        String mobileNumber = scn.nextLine();
+        System.out.print("Enter Connection Type (Domestic/Commercial): ");
+        String connectionType = scn.nextLine().trim();
+        System.out.print("Enter Your Division: ");
+        String division = scn.nextLine();
+        System.out.print("Enter Your Email ID: ");
+        String email = scn.nextLine();
+
+        // Create an object of ElectricityBill
+        new ElectricityBill(name, address, mobileNumber, connectionType, division, email);
+    }
+}  // **CLOSED Main CLASS HERE**
