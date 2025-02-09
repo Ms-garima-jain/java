@@ -7,10 +7,10 @@ class ElectricityBill {
     long finalConsumption;
     double charge;
     double fixedCharge;
-    double totalCharge; // Changed from long to double
+    double totalCharge;
     long subsidy;
     double rebate;
-    double sanctionedLoad = 0; // Default value to prevent uninitialized errors
+    double sanctionedLoad = 0; // Default value
     long currentReading;
     long previousReading;
 
@@ -26,7 +26,6 @@ class ElectricityBill {
         this.division = division;
         this.email = email;
 
-        // Get user input based on connection type
         if (connectionType.equalsIgnoreCase("Domestic")) {
             System.out.print("Enter Current Reading: ");
             currentReading = scn.nextLong();
@@ -39,25 +38,18 @@ class ElectricityBill {
             charge = calculateDomesticCharges(finalConsumption);
             fixedCharge = calculateDomesticFixedCharge(finalConsumption);
             subsidy = calculateSubsidy(finalConsumption);
-            totalCharge = charge + fixedCharge - subsidy; // Now using double
+            totalCharge = charge + fixedCharge - subsidy;
 
         } else if (connectionType.equalsIgnoreCase("Commercial")) {
             System.out.print("Enter sanctioned load (in kW): ");
             sanctionedLoad = scn.nextDouble();
             scn.nextLine(); // Consume newline left by nextDouble()
 
-            System.out.print("Enter Current Reading: ");
-            currentReading = scn.nextLong();
-            System.out.print("Enter Previous Reading: ");
-            previousReading = scn.nextLong();
-
-            // Calculate final consumption
-            finalConsumption = currentReading - previousReading;
-
-            charge = calculateCommercialCharges(finalConsumption);
+            // Calculate commercial charges based on sanctioned load
+            charge = calculateCommercialCharges(sanctionedLoad);
             fixedCharge = calculateCommercialFixedCharge(sanctionedLoad);
-            rebate = calculateRebate(finalConsumption);
-            totalCharge = charge + fixedCharge - rebate; // Now using double
+            rebate = calculateRebate(sanctionedLoad);
+            totalCharge = charge + fixedCharge - rebate;
 
         } else {
             System.out.println("Invalid connection type. Please enter 'Domestic' or 'Commercial'.");
@@ -108,38 +100,21 @@ class ElectricityBill {
         return finalConsumption <= 150 ? 100 : 0;
     }
 
-    // Commercial Energy Charge Calculation
-    private double calculateCommercialCharges(long finalConsumption) {
-        double totalCharge = 0;
-
-        if (finalConsumption > 2000) {
-            totalCharge += (finalConsumption - 2000) * 7.50;
-            finalConsumption = 2000;
-        }
-        if (finalConsumption > 1000) {
-            totalCharge += (finalConsumption - 1000) * 7.00;
-            finalConsumption = 1000;
-        }
-        if (finalConsumption > 500) {
-            totalCharge += (finalConsumption - 500) * 6.50;
-            finalConsumption = 500;
-        }
-        if (finalConsumption > 0) {
-            totalCharge += finalConsumption * 6.00;
-        }
-        return totalCharge;
+    // Commercial Energy Charge Calculation (Based on sanctioned load)
+    private double calculateCommercialCharges(double sanctionedLoad) {
+        return sanctionedLoad * 6.50; // ₹6.50 per kW (Modify as per tariff)
     }
 
     // Commercial Fixed Charge Calculation
     private double calculateCommercialFixedCharge(double sanctionedLoad) {
-        return sanctionedLoad * 90; // ₹90 per kW
+        return sanctionedLoad * 90; // ₹90 per kW fixed charge
     }
 
     // Rebate Calculation (for Commercial consumers)
-    private double calculateRebate(long finalConsumption) {
+    private double calculateRebate(double sanctionedLoad) {
         System.out.print("Is power factor above 0.85? (yes/no): ");
         String powerFactorStatus = scn.next();
-        return powerFactorStatus.equalsIgnoreCase("yes") ? finalConsumption * 1.00 : 0;
+        return powerFactorStatus.equalsIgnoreCase("yes") ? sanctionedLoad * 10.00 : 0; // ₹10 per kW rebate
     }
 
     // Print Bill
@@ -154,12 +129,15 @@ class ElectricityBill {
         System.out.printf("Division:             %s\n", division);
         System.out.printf("Email ID:             %s\n", email);
         System.out.println("--------------------------------------------------");
-        System.out.printf("Previous Reading:      %d units\n", previousReading);
-        System.out.printf("Current Reading:       %d units\n", currentReading);
-        System.out.printf("Final Consumption:     %d units\n", finalConsumption);
-        if (connectionType.equalsIgnoreCase("Commercial")) {
+
+        if (connectionType.equalsIgnoreCase("Domestic")) {
+            System.out.printf("Previous Reading:      %d units\n", previousReading);
+            System.out.printf("Current Reading:       %d units\n", currentReading);
+            System.out.printf("Final Consumption:     %d units\n", finalConsumption);
+        } else {
             System.out.printf("Sanctioned Load:       %.2f kW\n", sanctionedLoad);
         }
+
         System.out.printf("Energy Charges:        %.2f\n", charge);
         System.out.printf("Fixed Charges:         %.2f\n", fixedCharge);
 
@@ -174,9 +152,9 @@ class ElectricityBill {
         System.out.println("Pay Before Due Date to Avoid Late Fees.");
         System.out.println("--------------------------------------------------\n");
     }
-}  // **CLOSED ElectricityBill CLASS HERE**
+}  
 
-
+// Main Class
 class Main {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
@@ -199,4 +177,5 @@ class Main {
         // Create an object of ElectricityBill
         new ElectricityBill(name, address, mobileNumber, connectionType, division, email);
     }
-}  // **CLOSED Main CLASS HERE**
+}  
+
