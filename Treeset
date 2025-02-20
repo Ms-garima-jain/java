@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.TreeSet;
+import java.lang.Math;
+
+class Reservation
+{
+public static void main ( String [] args )
+{
+TreeSet <Integer> s = new TreeSet <Integer>();
+Scanner scn = new Scanner ( System.in );
+int n = scn.nextInt ();
+int max =10;
+int min =1;
+int range = max-min+1;
+while ( s.size ()<n )
+{
+	int random =(int ) (Math.random()*range)+min;
+	s.add(random);
+}
+for ( Integer i: s )
+{
+System.out.print ( i + "   " );
+}
+int number = scn.nextInt ();
+if ( s.contains(number) )
+{
+	System.out.print ( number + " is present " );
+}
+else
+{
+		System.out.print ( number + " is not present " );
+
+}
+
+}
+
+
+}
