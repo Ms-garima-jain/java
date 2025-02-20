@@ -1,0 +1,44 @@
+import java.util.TreeSet;
+import java.util.Scanner;
+import java.util.Iterator;
+
+class UniqueProduct {
+    public static void main(String[] args) {
+        TreeSet<Double> list = new TreeSet<>();
+        Scanner scn = new Scanner(System.in);
+        
+        int choice;
+        do {
+            System.out.println("\n Enter 1 to add product price ");
+            System.out.println(" Enter 2 to get expensive product list ");
+            System.out.println(" Enter 3 to exit ");
+            choice = scn.nextInt();
+            
+            switch (choice) {
+                case 1:
+                    System.out.println(" Enter product price ");
+                    double price = scn.nextDouble();
+                    list.add(price);
+                    System.out.println(" Product price added successfully ");
+                    break;
+                
+                case 2:
+                    System.out.println(" List displayed in descending order (highest product price first): ");
+                    Iterator<Double> itr = list.descendingIterator(); 
+                    while (itr.hasNext()) {  
+                        System.out.println(itr.next());
+                    }
+                    break;
+                
+                case 3:
+                    System.out.println("Exiting code...");
+                    break;
+                
+                default:
+                    System.out.println("Invalid choice! Please enter 1, 2, or 3.");
+            }
+        } while (choice != 3); 
+        
+        scn.close(); 
+    }
+}
