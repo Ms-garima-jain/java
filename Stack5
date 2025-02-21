@@ -1,0 +1,25 @@
+public class PalindromeUsingStack {
+    public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the String");
+    String str=sc.nextLine();
+    Stack<Character>s=new Stack<>();
+    for(char x:str.toCharArray())
+    {
+    	s.push(x);
+    }
+		String reversed="";
+		while(!s.isEmpty())
+		{
+			reversed=reversed+s.pop();
+		}
+		if(str.equals(reversed))
+		{
+			System.out.println("String is palindrome");
+		}
+		else 
+		{
+			System.out.println("String is not palindrome");
+		}
+	}
+}
