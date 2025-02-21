@@ -1,0 +1,71 @@
+import java.util.Scanner;
+import java.util.Vector;
+import java.util.Iterator;
+import java.util.ListIterator;
+
+class Product {
+    int pid;
+    String pname;
+    double price;
+
+    Product(int pid, String pname, double price) {
+        this.pid = pid;
+        this.pname = pname;
+        this.price = price;
+    }
+
+    public String toString() {
+        return "product id : " + pid + " productname : " + pname + " price : " + price;
+    }
+}
+
+class Pro {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Enter number of product");
+
+        int productnumber = scn.nextInt();
+        scn.nextLine(); 
+
+        Vector<Product> data = new Vector<>();
+
+        for (int i = 0; i < productnumber; i++) {
+            System.out.println("Enter id of product");
+            int productid = scn.nextInt();
+            scn.nextLine(); 
+
+            System.out.println("Enter name of product");
+            String productname = scn.nextLine();
+
+            System.out.println("Enter price of product");
+            double productprice = scn.nextDouble();
+            scn.nextLine(); // VERY IMPORTANT: Consume newline after nextDouble()
+
+            Product obj = new Product(productid, productname, productprice);
+            data.add(obj);
+        }
+
+        System.out.println("For Each");
+        for (Product i : data) {
+            System.out.println(i);
+        }
+
+        System.out.println("-------------------");
+
+        System.out.println("Iterator");
+        Iterator<Product> itr = data.iterator();
+        while (itr.hasNext()) { 
+            System.out.println(itr.next()); 
+        }
+
+        System.out.println("-------------------");
+
+        System.out.println("List Iterator");
+        ListIterator<Product> listItr = data.listIterator(); 
+        while (listItr.hasNext()) { 
+            System.out.println(listItr.next());
+        }
+
+        scn.close();
+    }
+}
