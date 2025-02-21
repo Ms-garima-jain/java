@@ -1,0 +1,40 @@
+import java.util.TreeSet;
+import java.util.Scanner;
+
+class Rollno {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        TreeSet<Integer> list = new TreeSet<>();
+
+        while (true) {
+            System.out.println("Enter 1 to add roll number");
+            System.out.println("Enter 2 to display roll numbers");
+            System.out.println("Enter 3 to exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = scn.nextInt();  // Read user input for choice
+
+            if (choice == 1) {
+                System.out.print("Enter roll number: ");
+                int rollnumber = scn.nextInt();
+                list.add(rollnumber);
+                System.out.println("Roll number added successfully.");
+            } 
+            else if (choice == 2) {
+                System.out.println("Displaying sorted roll numbers...");
+                for (Integer i : list) {  // Use Integer instead of Rollno
+                    System.out.println(i);
+                }
+            } 
+            else if (choice == 3) {
+                System.out.println("EXITING...");
+                break;
+            } 
+            else {
+                System.out.println("Enter a valid value.");
+            }
+        }
+
+        scn.close();  // Close scanner to prevent resource leak
+    }
+}
