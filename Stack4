@@ -1,0 +1,14 @@
+import java.util.Stack;
+import java.util.*;
+public class ReverseStringByStack {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+  Stack<String> s=new Stack<String>();
+  s.add("HELLO");
+  StringBuilder str=new StringBuilder(s.push("HELLO"));
+  System.out.println(str.reverse());
+
+	}
+
+}
