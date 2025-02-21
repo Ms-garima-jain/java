@@ -1,0 +1,74 @@
+import java.util.Scanner;
+import java.util.HashSet;
+
+class Employess {
+    String employeeName;
+    int employeeid;
+    String employeeDepartment;
+
+    String employeeName(String employeeName) {
+        return employeeName;
+    }
+
+    int employeeid(int employeeid) {
+        return employeeid;
+    }
+
+    String employeeDepartment(String employeeDepartment) {
+        return employeeDepartment;
+    }
+
+    Employess(int employeeid, String employeeNameString, String employeeDepartment) {
+        this.employeeName = employeeNameString;
+        this.employeeid = employeeid;
+        this.employeeDepartment = employeeDepartment;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee id : " + employeeid + " Employee Name : " + employeeName + "\n" +
+               "Employee department : " + employeeDepartment + "\n";
+    }
+
+    @Override
+    public int hashCode() {
+        return employeeid;
+    }
+
+     @Override
+   public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Employess employess = (Employess) obj;
+        return employeeid == employess.employeeid;
+    }
+}
+
+class Emp {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Enter number of employees");
+        int employees = scn.nextInt();
+        scn.nextLine(); // Consume newline
+
+        HashSet<Employess> data = new HashSet<>();
+
+        for (int i = 0; i < employees; i++) {
+            System.out.println("Enter employee id");
+            int employeeid = scn.nextInt();
+            scn.nextLine(); // Consume newline
+            System.out.println("Enter Employee name ");
+            String name = scn.nextLine();
+            System.out.println("Enter Employee department ");
+            String department = scn.nextLine();
+
+            Employess obj = new Employess(employeeid, name, department);
+            data.add(obj);
+        }
+
+        for (Employess i : data) {
+            System.out.println(i);
+        }
+        scn.close(); // Close the scanner to prevent resource leaks
+    }
+}
