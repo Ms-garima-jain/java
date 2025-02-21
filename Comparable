@@ -1,0 +1,72 @@
+import java.util.Comparator;
+import java.util.TreeSet;
+
+class Student implements Comparable<Student> {
+    private int rollno;
+    private String name;
+    private double marks;
+
+    Student(int rollno, String name, double marks) {
+        this.rollno = rollno;
+        this.name = name;
+        this.marks = marks;
+    }
+
+    public int getRollno() {
+        return rollno;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getMarks() {
+        return marks;
+    }
+
+    public void setRollno(int rollno) {
+        this.rollno = rollno;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMarks(double marks) {
+        this.marks = marks;
+    }
+
+    public String toString() {
+        return "Roll no : " + rollno + " Name " + name + " Marks " + marks;
+    }
+
+    public int compareTo(Student other) {
+        // Change the comparison to achieve descending order
+        if (this.marks < other.marks) {
+            return 1; // Swap the return values
+        } else if (this.marks > other.marks) {
+            return -1; // Swap the return values
+        } else {
+            return 0;
+        }
+    }
+}
+
+class Stu {
+    public static void main(String[] args) {
+        TreeSet<Student> obj = new TreeSet<>();
+        Student s1 = new Student(101, "garima", 100);
+        Student s2 = new Student(102, "little", 200);
+        Student s3 = new Student(103, "gita", 90);
+        Student s4 = new Student(104, "babita", 20);
+        obj.add(s1);
+        obj.add(s2);
+        obj.add(s3);
+        obj.add(s4);
+        System.out.println("Students sorted by marks (descending):");
+
+        for (Student i : obj) {
+            System.out.println(i);
+        }
+    }
+}
