@@ -1,0 +1,74 @@
+import java.util.Scanner;
+import java.util.HashSet;
+
+class Student {
+    private int studentid;
+    private String studentName;
+    private String studentCourse;
+
+    Student(int studentid, String studentName, String studentCourse) {
+        this.studentid = studentid;
+        this.studentName = studentName;
+        this.studentCourse = studentCourse;
+    }
+
+    int getStudentid() {
+        return studentid;
+    }
+
+    String getStudentName() {
+        return studentName;
+    }
+
+    String getStudentCourse() {
+        return studentCourse;
+    }
+
+    @Override
+    public String toString() {
+        return "student id : " + studentid + "\n" +
+               "studentName : " + studentName + "\n" +
+               "studentCourse :" + studentCourse;
+    }
+
+    @Override
+    public int hashCode() {
+        return studentid;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Student student = (Student) obj;
+        return studentid == student.studentid;
+    }
+}
+
+class StudentName {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Enter number of student");
+        int nostudent = scn.nextInt();
+        scn.nextLine(); // Consume newline
+
+        HashSet<Student> data = new HashSet<>();
+
+        for (int i = 0; i < nostudent; i++) {
+            System.out.println("Enter name of student");
+            String name = scn.nextLine();
+            System.out.println("Enter id of student");
+            int id = scn.nextInt();
+            scn.nextLine(); // Consume newline
+            System.out.println("Enter course of student");
+            String course = scn.nextLine();
+            Student obj = new Student(id, name, course);
+            data.add(obj);
+        }
+
+        for (Student i : data) {
+            System.out.println(i);
+        }
+        scn.close();
+    }
+}
