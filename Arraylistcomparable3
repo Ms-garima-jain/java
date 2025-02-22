@@ -1,0 +1,122 @@
+import java.util.*;
+class RankingSystem implements Comparable<RankingSystem >
+{
+
+private int rollno ;
+private String name;
+private int totalMarks;
+void setRollno ( int rollno )
+{
+	this.rollno = rollno;
+}
+int getRollno ()
+{
+	return rollno;
+}
+void setName ( String Name)
+{
+	this.name= name;
+}
+String getName ( )
+{
+	return name;
+}
+ void setTotalMarks ( int totalMarks )
+ {
+	 this.totalMarks = totalMarks;
+ }
+ int getTotalMarks ()
+ {
+	 return totalMarks;
+ }
+ 
+ RankingSystem ( int rollno, String name ,int totalMarks )
+ {
+	 this.rollno = rollno;
+	 this.name = name;
+	 this.totalMarks = totalMarks;
+ }
+ public String toString ()
+ {
+	 return " Rollno : "+ rollno + " Name  : "+ name+ " Totalmarks : " + totalMarks; 
+ }
+ public int compareTo ( RankingSystem r )
+ {
+	 if (getTotalMarks () <r.getTotalMarks ())
+	 {
+		 return 1;
+	 }
+	 else if ( getTotalMarks() > r.getTotalMarks ())
+	 {
+		 return -1;
+	 }
+	 else
+	 {
+		 return 0;
+	 }
+ }
+}
+ class SortName implements Comparator < RankingSystem >
+ {
+	 
+	 public int compare ( RankingSystem i1 , RankingSystem i2 )
+	 {
+		 return i1.getName().compareTo (i2.getName ());
+	 }
+	 
+ }
+ class SortRollno implements Comparator <RankingSystem > 
+ {
+	 public int compare ( RankingSystem r1 , RankingSystem r2 )
+	 {
+		 return 	Integer.compare ( r1.getRollno (), r2.getRollno ());
+	 }
+ }
+ class Main
+ {
+ public static void main ( String [] args )
+ {
+ ArrayList <RankingSystem> list = new ArrayList <RankingSystem> ();
+ Scanner scn = new Scanner ( System.in );
+ System.out.println ( " Enter the  number of students " );
+ int student = scn.nextInt ();
+ for (int i =0; i<student; i++ )
+ {
+	 System.out.println ( " Enter the  Rollnumber " );
+	 int rollno = scn.nextInt ();
+	 System.out.println ( " Enter the  Name" );
+	 scn.nextLine ();
+	 String name = scn.nextLine ();
+	 System.out.println ( " Enter the  Marks" );
+	 int marks = scn.nextInt ();
+	 RankingSystem obj = new RankingSystem ( rollno, name, marks );
+	 list.add (obj );
+	 
+	 
+	 
+	 
+	 
+ }
+ Collections.sort (list );
+ //System.out.println ( list );
+ System.out.println ( " Total marks in descending order " );
+ for (RankingSystem i : list )
+ {
+	 System.out.println (i );
+ }
+ Collections.sort (list, new SortName ());
+ System.out.println ( " Names in ascending order " );
+ for (RankingSystem i : list )
+ {
+	 System.out.println (i );
+ }
+  Collections.sort (list, new SortRollno ());
+
+ System.out.println ( " rollno in ascending order " );
+ for (RankingSystem i : list )
+ {
+	 System.out.println (i );
+ }
+ }
+ 
+ }
