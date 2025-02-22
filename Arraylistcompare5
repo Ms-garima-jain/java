@@ -1,0 +1,113 @@
+import java.util.*;
+
+class HallManagement implements Comparable<HallManagement> {
+    private String name;
+    private String contactNumber;
+    private double costPerDay;
+    private String ownerName;
+
+    // Getters and Setters
+    void setName(String name) {
+        this.name = name;
+    }
+
+    String getName() {
+        return name;
+    }
+
+    void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    String getContactNumber() {
+        return contactNumber;
+    }
+
+    void setCost(double costPerDay) {
+        this.costPerDay = costPerDay;
+    }
+
+    double getCost() {
+        return costPerDay;
+    }
+
+    void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    String getOwnerName() {
+        return ownerName;
+    }
+
+    // Constructor
+    HallManagement(String name, String contactNumber, double costPerDay, String ownerName) {
+        this.name = name;
+        this.contactNumber = contactNumber;
+        this.costPerDay = costPerDay;
+        this.ownerName = ownerName;
+    }
+
+    HallManagement() {
+    }
+
+    public String toString() {
+        return "Name: " + name + ", Contact Number: " + contactNumber + ", Cost Per Day: " + costPerDay + ", Owner Name: " + ownerName;
+    }
+	public int compareTo (HallManagement h)
+	{
+		 if (getCost() < h.getCost ())
+		 {
+			 return -1;
+		 }
+		 else if ( getCost() > h.getCost ())
+		 {
+			 return +1;
+		 }
+		 else
+		 {
+			 return 0;
+		 }
+	}
+}
+
+class Main {
+    public static void main(String[] args) {
+        ArrayList<HallManagement> list = new ArrayList<>();
+        Scanner scn = new Scanner(System.in);
+
+        System.out.print("Enter the number of halls: ");
+        int no = scn.nextInt();
+        scn.nextLine(); // Consume the leftover newline
+
+        for (int i = 0; i < no; i++) {
+            System.out.println("\nEnter details for Hall " + (i + 1) + ":");
+
+            System.out.print("Enter Hall Name: ");
+            String hallName = scn.nextLine();
+
+            System.out.print("Enter Contact Number: ");
+            String contact = scn.nextLine();
+
+            System.out.print("Enter Cost Per Day: ");
+            double cost = scn.nextDouble();
+            scn.nextLine(); // Consume the leftover newline
+
+            System.out.print("Enter Owner Name: ");
+            String ownerName = scn.nextLine();
+
+            // Create HallManagement object and add to list
+            HallManagement obj = new HallManagement(hallName, contact, cost, ownerName);
+            list.add(obj);
+        }
+
+        // Displaying all halls
+		Collections.sort(list );
+		
+        System.out.println("\nHall Details:");
+        for (HallManagement hall : list) {
+            System.out.println(hall);
+        }
+
+        scn.close();
+    }
+}
