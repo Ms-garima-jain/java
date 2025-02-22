@@ -1,0 +1,152 @@
+import java.util.Scanner;
+import java.util.*;
+//import java.lang;
+
+class Sports  implements Comparable<Sports>
+{
+ private  int playerid ;
+  private String playername;
+ private  int matchesplayed;
+private  double averageScore;
+// get ----------- playerid
+int getPlayerid ()
+{
+return playerid;
+}
+// get ----------- playername
+
+String  getPlayername ()
+{
+return playername;
+}
+
+// get ----------- playerscore
+double  getAverageScore()
+{
+return averageScore;
+}
+// get ----------- matchesplayed
+ int getmatchesplayed ()
+ {
+ return matchesplayed;
+ }
+ //settar method 
+  void SetPlayerrid (int playerid)
+  {
+  this.playerid = playerid;
+  }
+   void SetPlayername (String playername)
+  {
+  this.playername= playername;
+  }
+   void SetMatchesPlayes (int matchesplayed)
+  {
+  this.matchesplayed= matchesplayed;
+  }
+   void SetAverageScore(double averageScore)
+  {
+  this.averageScore = averageScore;
+  }
+
+Sports ( int playerid , String playername, int matchesplayed, double averageScore )
+{
+this.playerid = playerid;
+this.playername= playername;
+this.matchesplayed= matchesplayed;
+this.averageScore= averageScore;
+
+}
+public int compareTo ( Sports s )
+{
+if ( getAverageScore() < s.getAverageScore())
+{
+return +1;
+}
+else  if ( getAverageScore()>s.getAverageScore())
+{
+return -1;
+}
+else
+{
+return 0;
+}
+
+}
+ public String toString ()
+ {
+	 
+	 return " player id :  " + playerid + " \n " +  "playername : "+ playername + "\n " +"Matches played:  " + matchesplayed + " \n " +"Average Score :"+  averageScore;
+ }
+
+}
+class  Matchesplayed  implements Comparator<Sports>
+{
+	 public int compare ( Sports s1 , Sports s2 )
+	 {
+		         return Integer.compare(s2.getmatchesplayed(), s1.getmatchesplayed());
+
+	 }
+	
+}
+class  Playername  implements Comparator<Sports>
+{
+	 public int compare ( Sports s1 , Sports s2 )
+	 {
+		 return s1.getPlayername().compareTo(s2.getPlayername());
+	 }
+	
+}
+class Main
+{
+public static void main ( String [] args )
+{
+ArrayList  <Sports> data = new ArrayList <Sports> (); 
+Scanner scn = new Scanner ( System.in );
+System.out.println ( " Enter how many member you want to enter " );
+int n = scn.nextInt();
+for ( int i =0; i<n ; i++ ){
+System.out.println ( " Enter player id " );
+int id  = scn.nextInt ();
+System.out.println ( " Enter playername " );
+scn.nextLine();
+String name = scn.nextLine ();
+System.out.println ( " Enter matchs played  " );
+int matchesplayed = scn.nextInt ();
+
+System.out.println ( " Enter average score " );
+double  averageScore = scn.nextDouble ();
+Sports obj = new Sports (id , name , matchesplayed, averageScore  );
+data.add (obj );
+
+}
+Collections.sort (data );
+System.out.println (" averageScore in descending order " );
+for ( Sports i : data )
+{
+	
+	System.out.println ( i );
+	System.out.println ( " --------------------" );
+}
+
+Collections.sort ( data, new Matchesplayed() );
+System.out.println ( " matches played : Descending order " );
+for ( Sports i : data )
+{
+	
+	System.out.println ( i );
+	System.out.println ( " --------------------" );
+}
+
+System.out.println ( " Names : Ascendimg order " );
+Collections.sort ( data, new Playername() );
+
+for ( Sports i : data )
+{
+	
+	System.out.println ( i );
+	System.out.println ( " --------------------" );
+}
+
+}
+
+}
