@@ -1,0 +1,30 @@
+import java.util.*;
+class  Student 
+{
+public static void main ( String [] args )
+{
+Scanner scn = new Scanner ( System.in );
+HashMap <String,Integer > list = new HashMap < String , Integer > ();
+System.out.println ( " Enter  no of entries  to record " );
+int n = scn.nextInt ();
+ for ( int i =0; i< n ; i++ )
+ {
+ System.out.println ( " Enter name of student " );
+ String name = scn.next ();
+ System.out.println ( " Enter Marks" );
+ int marks  = scn.nextInt();
+ list.put ( name , marks );
+ 
+ 
+ 
+ }
+ for ( Map.Entry < String,Integer > i : list .entrySet())
+ {
+ System.out.print ( " Name " + i.getKey () );
+ System.out.print(  " Marks " +i.getValue ()+ " \n ");
+ }
+
+
+}
+
+}
