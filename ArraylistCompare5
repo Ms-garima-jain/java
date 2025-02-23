@@ -1,0 +1,87 @@
+import java.util.*;
+class Movies 
+{
+
+private String title ;
+private int releaseYear;
+private double rating ;
+void SetTitle (String title )
+{
+this.title = title;
+}
+String getTitle ()
+{
+return  title;
+}
+void setReleaseYear ()
+{
+this.releaseYear = releaseYear;
+}
+int releaseYear ()
+{
+return releaseYear;
+}
+void SetRating ( double rating )
+{
+this.rating = rating;
+}
+ double getRating ()
+ {
+ return rating;
+ }
+ Movies ()
+ {
+ }
+ Movies ( String title ,int releaseYear, double rating )
+ {
+ this.title = title;
+ this.releaseYear = releaseYear;
+ this.rating = rating;
+ }
+ public String toString ()
+ {
+ return " Title : " + title +"Release year : " + releaseYear +" Rating :" + rating ;
+ }
+ 
+
+}
+class SortRating implements Comparator<Movies >
+{
+	public int compare ( Movies m1 , Movies m2 )
+	{
+		return Double.compare(m1.getRating(),m2.getRating());
+		
+	}
+}
+ class Main
+ {
+ public static void main ( String [] args)
+ {Scanner scn = new Scanner ( System.in );
+ ArrayList <Movies > list = new ArrayList <Movies > ();
+ System.out.println ( " Enter number of movies " );
+ int n =scn.nextInt ();
+ for ( int i =0; i<n ; i++ )
+ {
+ System.out.println ( " Enter the title of the movies " );
+ String moviesname = scn.nextLine ();
+ scn.nextLine ();
+ System.out.println ( " Enter the  realease year " );
+ int year = scn.nextInt ();
+ System.out.println ( " Enter rating " );
+
+double rating = scn.nextDouble (); 
+Movies obj = new Movies ( moviesname, year, rating );
+ list.add (obj );
+
+ 
+ }
+ 
+ Collections.sort (list, new SortRating ());
+ for (Movies i :list )
+ {
+ System.out.println ( i );
+ }
+ 
+ }
+ 
+ }
