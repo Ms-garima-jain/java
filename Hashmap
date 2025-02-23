@@ -1,0 +1,29 @@
+import java.util.*;
+
+class Capital 
+{
+public static void main ( String [] args )
+{
+
+Scanner scn = new Scanner ( System .in );
+System.out.println ("Enter country and its capital " );
+HashMap < String, String > m = new HashMap < String , String > ();
+System.out.println ( " Enter the number of countries " );
+int n = scn.nextInt ();
+
+  for ( int i =0; i<n ; i++ ){
+String Country = scn.next ();
+String capital = scn.next ();
+m.put ( Country, capital );
+}
+System.out.println ( m );
+for (Map.Entry<String , String > i :m.entrySet())
+{
+	System.out.print ( " Country " + i.getKey () + "  " +" \n " );
+	System.out.print ( " Capital " + i.getValue ()+ "  "+" \n ");
+}
+
+}
+
+
+}
