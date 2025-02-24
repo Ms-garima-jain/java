@@ -1,0 +1,68 @@
+import java.util.*;
+
+class Employee {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        HashMap<String, Integer> list = new HashMap<String, Integer>();
+
+        while (true) {
+            System.out.println("\n--- Menu ---");
+            System.out.println("1. Add Employee salary");
+            System.out.println("2. Update Employee salary");
+            System.out.println("3. Remove Employee salary");
+            System.out.println("4. Display Employee salaries");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scn.nextInt();
+            scn.nextLine();  // Consume the newline character
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Employee name: ");
+                    String Employeename = scn.nextLine();
+                    System.out.print("Enter Salary: ");
+                    int salary = scn.nextInt();
+                    list.put(Employeename, salary);
+                    System.out.println("Record entered successfully!");
+                    break;
+
+                case 2:
+                    System.out.print("Enter Employee name to update salary: ");
+                    String up = scn.nextLine();
+                    if (list.containsKey(up)) {
+                        System.out.print("Enter new salary: ");
+                        int upsalary = scn.nextInt();
+                        list.replace(up, upsalary);
+                        System.out.println("Data updated successfully!");
+                    } else {
+                        System.out.println("Data not found.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter Employee name to remove: ");
+                    String Removename = scn.nextLine();
+                    if (list.containsKey(Removename)) {
+                        list.remove(Removename);
+                        System.out.println("Record removed successfully!");
+                    } else {
+                        System.out.println("Data not found.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("\n--- Employee Salary List ---");
+                    for (Map.Entry<String, Integer> i : list.entrySet()) {
+                        System.out.println(i.getKey() + " : " + i.getValue());
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Exiting... Goodbye!");
+                   break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
