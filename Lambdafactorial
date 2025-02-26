@@ -1,0 +1,21 @@
+@FunctionalInterface
+interface Factorial
+{
+public int  calculate ( int n );
+}
+ class Main 
+ {
+ public static void main ( String [] args )
+ {
+ 
+ Factorial f1 = a -> { int store =1;{for ( int i = 1; i<=a ; i++ )
+                        {
+						  store = store * i;
+						
+						}
+						 return store;
+ }};
+						System.out.println ( f1.calculate ( 5 ));
+ }
+ 
+ }
