@@ -1,0 +1,26 @@
+interface Pallindrome 
+{
+	public String isPallindrome ( String  n );
+}
+ class Main 
+ {
+	 
+	 public static void main ( String [] args )
+	 {
+		 
+		 Pallindrome n =a -> { String reverse = new StringBuffer (a).reverse(). toString ();
+		 if ( reverse.equals (a))
+		 {
+			 
+			 return  " It is A a pllindrome " ;
+		 }
+		 else
+		 {
+			 return " It is not a pallindrome ";
+		 }
+		 
+		 };
+		 System.out.println ( n.isPallindrome ( " madam " ));
+		 System.out.println ( n . isPallindrome ( "Hello " ));
+	 }
+ }
