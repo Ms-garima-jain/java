@@ -1,0 +1,16 @@
+import java.util.*;
+import java.util.function.Function;
+class  Km 
+{
+public static void main ( String [] args )
+{
+Scanner  scn = new Scanner ( System. in );
+System.out.println ( " Kilometres  to miles converter  " );
+System.out.println ( " Enter km " );
+double km = scn.nextDouble ();
+Function <Double,Double >com = x->(x*0.621);
+System.out.println (" Miles " + com.apply ( km ));
+
+}
+
+}
