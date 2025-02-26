@@ -1,0 +1,106 @@
+import java.util.*;
+import java.util.function .*;
+
+class Product
+{
+private int id;
+private String name ;
+private double price ;
+private double rating ;
+void setId ( int id )
+{
+this.id = id;
+}
+
+ int getId ( )
+ {
+ return id;
+ }
+ 
+ void setName ( String name )
+{
+this.name = name;
+}
+
+ String getName ( )
+ {
+ return name;
+ }
+ 
+ 
+ void setPrice ( double price )
+{
+this.price = price;
+}
+
+ double getPrice ( )
+ {
+ return price;
+ }
+ 
+ void setRating ( double rating )
+{
+this.rating= rating;
+}
+
+ double getRating ( )
+ {
+ return rating;
+ }
+ Product (int id ,String name ,double price,double rating)
+ {
+ this.id = id;
+ this.name = name;
+ this.price = price;
+ this.rating = rating;
+ 
+ }
+ public  String toString ()
+ {
+ return  " Id  :  " + id + " Name " + name+ "price " + price + "Rating " + rating ;
+ }
+ 
+}
+ class Main
+ {
+ public static void main ( String [] args )
+ {
+ ArrayList <Product > list = new ArrayList <Product > ();
+ Product obj = new Product (1, "garima", 525.5  , 4.5 );
+  Product obj2 = new Product (2, "bhoomika", 420  , 5.5 );
+   Product obj3 = new Product (3, "tanya", 600  , 3.2 );
+ Product obj4 = new Product (4, "ishita", 200  , 2.5 );
+ list.add ( obj );
+ list.add ( obj2 );
+ list.add(obj3 );
+ list.add ( obj4 );
+ Predicate <Product> i = x -> (x.getPrice () >=500.0 && x.getRating ()>=4.0 );
+ System.out.println ( " list of discounted product " );
+  	ArrayList < Product> lm = new  ArrayList <Product > (); 
+
+  for ( Product k : list )
+  {
+	  if ( i.test(k ))
+	  {
+		  System.out.println ( k+ " Elegible for discount " );
+		  lm.add (k );
+	  }
+  }
+ 
+
+System.out.println ( " Display all discounted  products list " );
+  for ( Product lk : lm)
+  {
+	  System.out.println ( lk);
+  }
+ 
+ System.out.println ( " Display all products " );
+  for ( Product lk : list )
+  {
+	  System.out.println ( lk);
+  }
+
+
+ 
+ }
+ }
