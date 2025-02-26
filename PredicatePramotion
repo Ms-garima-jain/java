@@ -1,0 +1,89 @@
+import java.util.*;
+import java. util. function.*;
+class PromotionElegibilty
+{
+private int  id;
+private int  experience;
+
+private String name ;
+private double  rating ;
+void setExperience( int experience )
+ {
+  this.experience = experience ;
+ }
+
+int  getExperience ()
+{
+return experience;
+}
+ void setId ( int id )
+ {
+  this.id = id ;
+ }
+  int getId ()
+  {
+  return id ;
+  }
+  void setName (String name )
+  {
+  this.name = name;
+  }
+	String getName ()
+	{
+      return name;	
+	}
+	 void  setRating ( double rating)
+	 {
+	  this.rating = rating;
+	 }
+	 double getRating ()
+	 {
+	 return rating;
+	 }
+	 PromotionElegibilty ( int id , String name , double rating, int experience )
+	 {
+	 this.id = id ;
+	 this.name = name;
+	 this.rating = rating;
+	 this.experience = experience;
+	 }
+	 public String toString ()
+	 {
+	 return " Id " + id + "Name : "+ name+ " Rating : " + rating+ "Experience " + experience ;
+	 }
+}
+ class Main
+ {
+ 
+ public static void main ( String [] args )
+ {
+ ArrayList <PromotionElegibilty > data = new  ArrayList < PromotionElegibilty > ();
+ PromotionElegibilty obj = new PromotionElegibilty (1 , " garima " ,4.9, 4);
+  PromotionElegibilty obj2 = new PromotionElegibilty (2 , "chetna " ,3.5, 5);
+ PromotionElegibilty obj3 = new PromotionElegibilty (3 , " hari " ,5.0, 5);
+ PromotionElegibilty obj4 = new PromotionElegibilty (4 , " shreya " ,2.5 ,1);
+ data.add ( obj );
+ data.add ( obj2 );
+ data.add ( obj3 );
+ data .add ( obj4 );
+ Predicate <PromotionElegibilty > d = x->(x.getExperience()>3 && x.getRating()>4.2 );
+ ArrayList <PromotionElegibilty > seclist = new ArrayList < PromotionElegibilty > ();
+  for ( PromotionElegibilty k : data )
+  {
+  if( d .test ( k ))	
+  {
+  System.out.println ( " Eligible for  pramotion " + k );
+  seclist.add (k );
+  }
+  }
+  
+   System.out.println ( " list of employess elegible for voting " );
+   
+ for ( PromotionElegibilty k : seclist )
+  {
+  System.out.println ( k );
+  }
+
+ 
+ }
+ }
