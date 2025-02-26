@@ -1,0 +1,16 @@
+@FunctionalInterface
+interface Concat
+{
+	
+	public String  concatinat( String s1 , String s2 );
+}
+ class Main 
+ {
+	 
+	 public static void main ( String [] args )
+	 {
+		 
+		 Concat c1 = (a, b ) -> a+b ;
+		 System.out.println ( c1.concatinat ( "garima " , "jain " ));
+	 }
+ }
