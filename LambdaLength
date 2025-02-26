@@ -1,0 +1,15 @@
+@FunctionalInterface 
+interface Length
+{
+public int getLength ( String str );
+}
+ class Main 
+ {
+ public static void main ( String [] args )
+ {
+ 
+ Length l1 = x -> x.length();
+ System.out.println ( l1.getLength("garima " ));
+ }
+ 
+ }
