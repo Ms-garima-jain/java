@@ -1,0 +1,15 @@
+interface  EvenOdd 
+{
+public String check ( int n );
+}
+ class Main
+ {
+ public static void main ( String [] args )
+ {
+ EvenOdd no = a -> { if (a%2 ==0 ) return "even" ; 
+                   else    return "odd" ;};
+				   System.out.println ( no.check (3 ));
+ 
+ }
+ 
+ }
