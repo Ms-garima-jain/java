@@ -1,0 +1,14 @@
+@FunctionalInterface
+interface Square 
+{
+	public int Squaree ( int n );
+}
+ class Main
+ {
+ public static void main ( String [] args )
+ {
+ 
+ Square s =  a -> a* a ;
+ System.out.println ( s.Squaree ( 10 ));
+ }
+ }
