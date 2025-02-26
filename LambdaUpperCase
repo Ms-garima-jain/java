@@ -1,0 +1,14 @@
+interface Uppercase 
+{
+ public String Uppercase ( String n );
+}
+ class Main
+ {
+ public static void main ( String [] args )
+ {
+ Uppercase up = a -> { a =a.toUpperCase(); return a;};
+ System.out.println ( up.Uppercase ( " garima " ));
+ 
+ }
+ 
+ }
