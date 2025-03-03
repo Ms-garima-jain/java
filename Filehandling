@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.Scanner ;
+class Demo
+
+{
+public static void main ( String [] args ) throws IOException
+{
+PrintWriter pw = new PrintWriter ( "file1.txt" );
+Scanner scn = new Scanner ( System.in );
+System .out.println ( " Enter number to record enteries " );
+int n = scn.nextInt ();
+scn.nextLine ();
+for ( int i =0; i<n ; i++ )
+{
+System .out.println ( " Enter name");
+String name = scn.nextLine ();
+scn.nextLine ();
+pw.println (  name );
+System.out.println ( " record  entered successfully "  );
+
+}
+pw.close ();
+
+
+}
+
+}
