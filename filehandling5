@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.Scanner;
+class Demo
+{
+	
+	
+	public static void main ( String [] args ) throws  IOException
+	{
+		
+		        File f = new File("document.txt");
+                 f.createNewFile();
+				 Scanner scn = new Scanner(System.in);
+        System.out.println("Enter the text to write into the document:");
+        String inputText = scn.nextLine();
+		
+		 FileWriter fw = new FileWriter(f);
+        fw.write(inputText);
+        fw.close();
+		System.out.println("Enter the word to search for:");
+        String searchWord = scn.nextLine();
+		FileReader fr = new FileReader(f);
+		String line;
+        int count = 0;
+        BufferedReader br = new BufferedReader(fr);
+		while ((line = br.readLine())!=null )
+		{
+			String words [] =line.split(" " );
+			for ( String word : words )
+			{
+				
+				if (word.equalsIgnoreCase(searchWord)) {
+                    count++;
+                }
+			}
+		}
+		        System.out.println("The word '" + searchWord + "' appears " + count + " timefle in the file.");
+
+	}
+}
