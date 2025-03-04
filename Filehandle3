@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.Scanner;
+
+class Demo {
+    public static void main(String[] args) throws IOException {
+        File f = new File("source.txt");
+        f.createNewFile();
+        System.out.println("File created");
+
+        System.out.println("Enter data into source.txt file:");
+        Scanner scn = new Scanner(System.in);
+        String name = scn.nextLine();
+
+        FileWriter fw = new FileWriter(f);
+        fw.write(name);
+        fw.flush(); 
+        System.out.println("Data entered successfully");
+
+        System.out.println("Data of source file:");
+        FileReader fr = new FileReader(f);
+        int x = fr.read();
+        while (x != -1) {
+            System.out.print((char) x); // Print character by character
+            x = fr.read();
+        }
+        fr.close();
+
+        File g = new File("destination.txt");
+        g.createNewFile();
+        System.out.println("\nDestination file created");
+
+        FileReader gr = new FileReader(f); 
+        FileWriter gw = new FileWriter(g); 
+        int y;
+        while ((y = gr.read()) != -1) {
+            gw.write(y); 
+        }
+        gr.close();
+        gw.close();
+
+        System.out.println("Data copied successfully");
+
+        System.out.println("Data of destination file:");
+        FileReader grDest = new FileReader(g);
+        int z = grDest.read();
+        while (z != -1) {
+            System.out.print((char) z); 
+            z = grDest.read();
+        }
+        grDest.close();
+    }
+}
